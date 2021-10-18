@@ -72,4 +72,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		user.setPassword("####");
 		return user;
 	}
+
+	@Override
+	public Optional<User> findByEmail(String email) {
+		return repository.findByEmail(email);
+	}
 }
