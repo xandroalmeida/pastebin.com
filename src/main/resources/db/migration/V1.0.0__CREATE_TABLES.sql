@@ -7,6 +7,9 @@ CREATE TABLE auth_user
 	PRIMARY KEY (id)
 );
 
+ALTER TABLE auth_user ADD CONSTRAINT email_unique UNIQUE(email);
+
+
 CREATE TABLE post
 (
 	id 				IDENTITY 		NOT NULL,

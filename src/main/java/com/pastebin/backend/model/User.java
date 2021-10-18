@@ -23,7 +23,6 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "auth_user")
-@Builder
 public class User implements UserDetails {
 	
 	private static final long serialVersionUID = 7571852901824152021L;
@@ -39,7 +38,7 @@ public class User implements UserDetails {
 	
 	@Column(name = "pwd_hash")
 	@NotNull
-	private String pwdHash;
+	private String password;
 	
 	@Column(name = "email")
 	@NotBlank
@@ -52,11 +51,6 @@ public class User implements UserDetails {
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		
 		return null;
-	}
-
-	@Override
-	public String getPassword() {
-		return this.getPwdHash();
 	}
 
 	@Override
