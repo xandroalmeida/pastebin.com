@@ -17,7 +17,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.sun.istack.NotNull;
 
-import lombok.Builder;
 import lombok.Data;
 
 @Data

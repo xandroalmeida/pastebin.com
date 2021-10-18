@@ -1,6 +1,5 @@
 package com.pastebin.backend.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import com.pastebin.backend.model.User;
@@ -14,5 +13,4 @@ public interface UserService {
 	Optional<User> read(Long id);
 	User update(User user);
 	void delete(Long id);
-	List<User> findAll();
 }
