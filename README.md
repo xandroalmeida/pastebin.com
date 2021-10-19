@@ -89,7 +89,7 @@ curl -i -X POST -H "Content-Type: multipart/form-data"  \
   
 Arquivos Privado 
 
-``` 
+```
 curl -i -X POST -H "Content-Type: multipart/form-data"  \
   -F "postFile=@<PATH_DO_ARQUIVO_ENVIADO>" \
   -F"publicAccess=false" \
@@ -101,7 +101,7 @@ curl -i -X POST -H "Content-Type: multipart/form-data"  \
   -F"publicAccess=false" \
   --header 'authorization: Basic <TOKEN OBTIDO NO LOGIN_USUARIO2>' \
   http://localhost:8080/posts -v
-```git
+```
 
 ### Lista todos os Posts publicos
 
