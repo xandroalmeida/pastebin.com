@@ -18,19 +18,27 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "post")
+@JsonInclude(Include.NON_NULL)
+@JsonIgnoreProperties({"storeFileName"})
+
 public class Post {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = CascadeType.ALL)
 	@JoinColumn(name = "belongs_to")
 	@NotNull
+	@JsonIgnoreProperties({"name", "email", "username", "password"})
 	private User belongsTo;
 
 	@Column(name = "sent_in")
@@ -38,14 +46,14 @@ public class Post {
 	@NotNull
 	private Date sentIn;
 
-	@Column(name = "file_name")
+	@Column(name = "original_file_name")
 	@NotEmpty
 	@Size(min = 1, max = 255)
-	private String fileName;
+	private String originalFileName;
 
-	@Column(name = "file_content")
+	@Column(name = "store_file_name")
 	@NotNull
-	private String fileContent;
+	private String storeFileName;
 
 	@Column(name = "public_access")
 	private boolean publicAccess;

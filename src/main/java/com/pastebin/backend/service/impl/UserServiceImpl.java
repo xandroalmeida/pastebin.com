@@ -26,12 +26,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	@Override
 	public User create(User user) {
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
-		return securityCleanup(repository.save(user));	
+		return repository.save(user);	
 	}
 
 	@Override
 	public Optional<User> read(Long id) {
-		return repository.findById(id).map(u -> securityCleanup(u));
+		return repository.findById(id);
 	}
 
 	@Override
@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 			user.setPassword(passwordEncoder.encode(user.getPassword()));
 		}
 		
-		return securityCleanup(repository.save(user));
+		return repository.save(user);
 		
 	}
 
@@ -62,17 +62,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		return user;
 	}
 	
-	/**
-	 * Nem o hash vamos mandar para a API, seguro morreu de velho.
-	 * 
-	 * @param user
-	 * @return
-	 */
-	private User securityCleanup(User user) {
-		user.setPassword("####");
-		return user;
-	}
-
 	@Override
 	public Optional<User> findByEmail(String email) {
 		return repository.findByEmail(email);

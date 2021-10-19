@@ -15,6 +15,9 @@ import javax.validation.constraints.Size;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.sun.istack.NotNull;
 
 import lombok.Data;
@@ -22,6 +25,8 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "auth_user")
+@JsonInclude(Include.NON_NULL)
+@JsonIgnoreProperties({ "username", "enabled", "accountNonExpired", "accountNonLocked", "credentialsNonExpired"})
 public class User implements UserDetails {
 	
 	private static final long serialVersionUID = 7571852901824152021L;
