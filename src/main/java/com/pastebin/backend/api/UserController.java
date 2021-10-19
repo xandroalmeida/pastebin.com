@@ -20,6 +20,11 @@ import com.pastebin.backend.model.User;
 import com.pastebin.backend.security.CurrentUser;
 import com.pastebin.backend.service.UserService;
 
+/**
+ * 
+ * Controlador responsável pelos endpoins de usuários
+ *
+ */
 @RestController
 @RequestMapping({"/users"})
 public class UserController {
@@ -56,6 +61,17 @@ public class UserController {
 		return ResponseEntity.of(me);
 	}
 	
+	/**
+	 * Faz o login no sistema.
+	 * Por estar sendo usada uma autenticação bem basica, aqui apenas vamos
+	 * validar se o usuário existe e se a senha convere. 
+	 * Se tiver tudo ok devolve um token Base64 para ser usado nas requisições 
+	 * 
+	 * @param email
+	 * @param password
+	 * 
+	 * @return
+	 */
 	@PostMapping("/login")
 	public ResponseEntity<String> login(
 			@RequestParam("email") String email,

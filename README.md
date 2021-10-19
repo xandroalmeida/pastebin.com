@@ -1,9 +1,9 @@
 
 ## Como executar o projeto sistema
 
-O projeto esta usando um banco de dados (H2) embutido, então não existe a necessidade de nenhum servidor externo.
+O projeto esta usando um banco de dados (H2) embutido, então não existe a necessidade de um servidor externo.
 
-A pasta ./data será utilizada para armazenar or arquivos enviados e do banco de dados. Não é necessário criar esta pasta, o sistema irá cria-la automaticamente.
+A pasta ./data será utilizada para armazenar os arquivos enviados e do banco de dados. Não é necessário criar esta pasta, o sistema irá cria-la automaticamente.
 
 ```
 mvn clean package
@@ -101,7 +101,7 @@ curl -i -X POST -H "Content-Type: multipart/form-data"  \
   -F"publicAccess=false" \
   --header 'authorization: Basic <TOKEN OBTIDO NO LOGIN_USUARIO2>' \
   http://localhost:8080/posts -v
-```
+```git
 
 ### Lista todos os Posts publicos
 

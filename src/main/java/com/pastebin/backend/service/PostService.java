@@ -9,6 +9,11 @@ import org.springframework.core.io.Resource;
 import com.pastebin.backend.model.Post;
 import com.pastebin.backend.model.User;
 
+/**
+ * Interface da classe de serviço responsável pela lógica de negócio envolvendo os Posts
+ * @author alexandro
+ *
+ */
 public interface PostService {
 
 	Optional<Post> create(String originalFilename, InputStream inStream, Boolean publicAccess, User currentUser);
